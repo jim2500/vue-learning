@@ -4,6 +4,9 @@
     </header>
 </template>
 <script>
+// imports
+import { bus } from '../main';
+
 export default {
     props: {
       title: {
@@ -18,8 +21,29 @@ export default {
     },
     methods: {
       changeTitle: function(){
-        this.$emit('changeTitle', 'Vue Ninjas');
+        // this.$emit('changeTitle', 'Vue Ninjas');
+        this.title = 'Vue Ninjas';
+        bus.$emit('titleChanged', 'Vue Ninjas');
       }
+    },
+    // lifecycle hooks
+    beforeCreate(){
+        alert('beforeCreate');
+    },
+    created(){
+        alert('created');
+    },
+    beforeMount(){
+        alert('beforeMount');
+    },
+    mounted(){
+        alert('mounted');
+    },
+    beforeUpdate(){
+        alert('beforeUpdate');
+    },
+    updated(){
+        alert('updated');
     }
 }
 </script>
